@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skillmatch — Análise de Compatibilidade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles/index.style.css" />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="wrap">
+        <div class="brand">Skillmatch</div>
+        <ul class="nav-links">
+          <li><a href="#candidato">Candidato</a></li>
+          <li><a href="#vagas">Vagas</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Análise de compatibilidade candidato × vaga</p>
+        <h1>
+          Compare o perfil do candidato com as vagas disponíveis em tempo real.
+        </h1>
+        <p class="lede">
+          Preencha os dados do candidato e veja o índice de compatibilidade
+          calculado automaticamente para cada vaga disponível, com base nas
+          habilidades em comum.
+        </p>
+      </div>
+    </header>
+
+    <section class="wrap">
+      <div class="dossier" id="candidato">
+        <form class="dossier-form" id="candidateForm">
+          <p class="eyebrow">Ficha do candidato</p>
+          <h2>Dados para o scan</h2>
+
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" value="" required />
+          </div>
+
+          <div class="field">
+            <label for="area">Área de atuação</label>
+            <input type="text" id="area" name="area" value="" required />
+          </div>
+
+          <div class="field">
+            <label for="habilidades">Habilidades (separadas por vírgula)</label>
+            <input
+              type="text"
+              id="habilidades"
+              name="habilidades"
+              value=""
+              required
+            />
+            <small>Ex.: HTML, CSS, JavaScript, React, Scrum</small>
+          </div>
+
+          <div class="field">
+            <label for="experiencia">Experiência (em meses)</label>
+            <input
+              type="number"
+              id="experiencia"
+              name="experiencia"
+              value=""
+              min="0"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn">
+            Rodar análise de compatibilidade
+          </button>
+        </form>
+
+        <div class="dossier-scan">
+          <p class="eyebrow">Resumo do candidato</p>
+          <div class="scan-name" id="summaryNome"></div>
+          <div class="scan-meta" id="summaryArea"></div>
+
+          <div class="chip-row" id="summaryChips"></div>
+
+          <div class="scan-stats">
+            <div class="stat">
+              <div class="num" id="statHabilidades">5</div>
+              <div class="label">habilidades cadastradas</div>
+            </div>
+            <div class="stat">
+              <div class="num" id="statMelhorMatch">—</div>
+              <div class="label">melhor compatibilidade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="jobs" id="vagas">
+      <div class="wrap">
+        <div class="jobs-head">
+          <h2>Vagas disponíveis</h2>
+          <p id="como-funciona">
+            o percentual mostra quantas habilidades exigidas pela vaga o
+            candidato já possui
+          </p>
+        </div>
+
+        <div class="job-grid" id="jobGrid"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        Skillmatch — análise de compatibilidade candidato/vaga.
+      </div>
+    </footer>
+
+    <script type="module" src="assets/scripts/main.js"></script>
+  </body>
+</html>

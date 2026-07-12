@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "empresa": "Microsoft",
+    "titulo": "Desenvolvedor Front-End Júnior",
+    "habilidades": ["JavaScript", "Vue", "Lógica de Programação", "Scrum"],
+    "salario": 3200,
+    "modalidade": "Híbrido",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 2,
+    "empresa": "TechGold",
+    "titulo": "Front-End Trainee",
+    "habilidades": ["HTML", "CSS", "JavaScript"],
+    "salario": 2100,
+    "modalidade": "Presencial",
+    "nivel": null
+  },
+  {
+    "id": 3,
+    "empresa": "WebDigitalSolutions",
+    "titulo": "Estágio JavaScript Júnior",
+    "habilidades": ["JavaScript", "Kanban", "GitHub", "HTML"],
+    "salario": 1950,
+    "modalidade": "Presencial",
+    "nivel": null
+  },
+  {
+    "id": 4,
+    "empresa": "NovaDigital",
+    "titulo": "Desenvolvedor Vue.js",
+    "habilidades": ["Vue", "Vuex", "Axios", "Scrum"],
+    "salario": 5290,
+    "modalidade": "Remoto",
+    "nivel": null
+  }
+]

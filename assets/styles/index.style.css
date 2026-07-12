@@ -1,0 +1,513 @@
+/* =========================================================
+   Skillmatch 
+   ========================================================= */
+
+:root {
+  --ink: #14181c;
+  --ink-soft: #40474d;
+  --paper: #f5f5f5;
+  --panel: #f7f5ee;
+  --panel-line: #d8d2c2;
+  --match-high: #2f6b4f;
+  --match-high-bg: #e2ecdf;
+  --match-mid: #a6791f;
+  --match-mid-bg: #f2e8d3;
+  --match-low: #a23e2e;
+  --match-low-bg: #f2ded9;
+  --accent: #2f6b4f;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --radius: 4px;
+  --border: 1px solid var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-size: 100% 42px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- layout shell ---------- */
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- nav ---------- */
+
+.site-nav {
+  border-bottom: var(--border);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand small {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: border-color 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  border-color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 56px 0 40px;
+  border-bottom: var(--border);
+}
+
+.hero .eyebrow {
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  max-width: 18ch;
+  letter-spacing: -0.01em;
+}
+
+.hero p.lede {
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-top: 14px;
+}
+
+/* ---------- candidate form (dossier) ---------- */
+
+.dossier {
+  margin-top: 40px;
+  border: var(--border);
+  background: var(--panel);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 720px) {
+  .dossier {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dossier-form,
+.dossier-scan {
+  padding: 28px;
+}
+
+.dossier-form {
+  border-right: var(--border);
+}
+
+@media (max-width: 720px) {
+  .dossier-form {
+    border-right: none;
+    border-bottom: var(--border);
+  }
+}
+
+.dossier-form h2,
+.dossier-scan h2 {
+  font-size: 1.05rem;
+}
+
+.field {
+  margin-top: 18px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-line);
+  background: var(--paper);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.field small {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.btn {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: var(--panel);
+  border: var(--border);
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* skill chips inside the form preview */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  border: 1px solid var(--ink);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--paper);
+}
+
+/* dossier scan panel: candidate summary */
+
+.scan-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-top: 6px;
+}
+
+.scan-meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.scan-stats {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat {
+  border: 1px solid var(--panel-line);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.stat .num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.stat .label {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* ---------- vagas section ---------- */
+
+.jobs {
+  padding: 56px 0 80px;
+}
+
+.jobs-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.jobs-head h2 {
+  font-size: 1.7rem;
+}
+
+.jobs-head p {
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.job-card {
+  border: var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.job-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.job-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.job-area {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-top: 3px;
+}
+
+.match-badge {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  border: 1px solid currentColor;
+}
+
+.match-badge.high {
+  color: var(--match-high);
+  background: var(--match-high-bg);
+}
+.match-badge.mid {
+  color: var(--match-mid);
+  background: var(--match-mid-bg);
+}
+.match-badge.low {
+  color: var(--match-low);
+  background: var(--match-low-bg);
+}
+
+/* scan meter — signature element */
+
+.scan-meter {
+  height: 8px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.scan-meter-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scan-meter-fill.high {
+  background: var(--match-high);
+}
+.scan-meter-fill.mid {
+  background: var(--match-mid);
+}
+.scan-meter-fill.low {
+  background: var(--match-low);
+}
+
+.job-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-line);
+  color: var(--ink-soft);
+}
+
+.skill-tag.matched {
+  border-color: var(--match-high);
+  color: var(--match-high);
+  background: var(--match-high-bg);
+}
+
+.job-foot {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--panel-line);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: var(--border);
+  padding: 24px 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- responsive nav for small screens ---------- */
+
+@media (max-width: 640px) {
+  .site-nav .wrap {
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    row-gap: 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dossier-form,
+  .dossier-scan {
+    padding: 20px;
+  }
+
+  .scan-stats {
+    grid-template-columns: 1fr;
+  }
+}

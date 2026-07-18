@@ -12,8 +12,7 @@ export function renderVagas(vagasComMatch) {
       classificacao,
       classificacaoCSS,
     } = resultado;
-    melhor = 50;
-    const nivel = 50;
+    melhor = Math.max(melhor, classificacaoPercentual);
 
     const card = document.createElement("article");
     card.className = "job-card";
@@ -28,17 +27,22 @@ export function renderVagas(vagasComMatch) {
         </div>
 
         <div class="scan-meter" aria-hidden="true">
-          <div class="scan-meter-fill ${nivel}" style="width:${50}%"></div>
+          <div class="scan-meter-fill high" style="width:${classificacaoPercentual.toFixed(2)}%"></div>
         </div>
 
         <p class="job-desc">Requisitos: ${vaga.requisitos.join(", ")}</p>
+        <div class="job-foot">
+
+ <p>Requisitos não Atendidos: ${requisitosNaoAtendidos}</p>
+</div>
 
         <div class="skill-list">
          
         </div>
 
         <div class="job-foot">
-          <span>requisitos: ${vaga.requisitos}</span>
+         <span>${classificacao}</span>
+        <span>${requisitosAtendidos.length}/${vaga.requisitos.length} habilidades</span>
                  </div>
       `;
 

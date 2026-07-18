@@ -7,7 +7,7 @@ import {
 } from "./motor.js";
 
 let vagas = [];
-const candidato = {
+let candidato = {
   nome: "",
   area: "",
   habilidades: [],
@@ -26,7 +26,6 @@ function atualizarCandidato(novoCandidato) {
 
 function limparCandidato() {
   removerCandidatoSalvo();
-  candidato = candidatoPadrao;
   atualizarTela();
   limparFormulario();
 }

@@ -1,12 +1,18 @@
-export function renderVagas(vagas) {
+export function renderVagas(vagasComMatch) {
   const grid = document.getElementById("jobGrid");
   grid.innerHTML = "";
   let melhor = 0;
 
-  vagas.forEach((vaga) => {
-    console.log(vaga.empresa);
-    const { percentual, requisitosMatch } = 50;
-    melhor = Math.max(melhor, percentual);
+  vagasComMatch.forEach(({ vaga, resultado }) => {
+    console.log(vaga);
+    const {
+      classificacaoPercentual,
+      requisitosAtendidos,
+      requisitosNaoAtendidos,
+      classificacao,
+      classificacaoCSS,
+    } = resultado;
+    melhor = 50;
     const nivel = 50;
 
     const card = document.createElement("article");
@@ -15,17 +21,17 @@ export function renderVagas(vagas) {
     card.innerHTML = `
         <div class="job-card-top">
           <div>
-            <div class="job-title">${vaga.titulo}</div>
-            <div class="job-area">${vaga.empresa}</div>
+            <div class="job-title">${vaga.exibirResumo()}</div>
+            <div class="job-area">${vaga.modalidade}</div>
           </div>
-          <span class="match-badge ${nivel}">${percentual}%</span>
+          <span class="match-badge">${classificacaoPercentual.toFixed(2)}%</span>  
         </div>
 
         <div class="scan-meter" aria-hidden="true">
-          <div class="scan-meter-fill ${nivel}" style="width:${percentual}%"></div>
+          <div class="scan-meter-fill ${nivel}" style="width:${50}%"></div>
         </div>
 
-        <p class="job-desc">${vaga.titulo}</p>
+        <p class="job-desc">Requisitos: ${vaga.requisitos.join(", ")}</p>
 
         <div class="skill-list">
          

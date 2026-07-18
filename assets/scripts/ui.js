@@ -4,7 +4,7 @@ export function renderVagas(vagas) {
   let melhor = 0;
 
   vagas.forEach((vaga) => {
-    console.log(vaga.vaga.empresa);
+    console.log(vaga.empresa);
     const { percentual, requisitosMatch } = 50;
     melhor = Math.max(melhor, percentual);
     const nivel = 50;
@@ -15,8 +15,8 @@ export function renderVagas(vagas) {
     card.innerHTML = `
         <div class="job-card-top">
           <div>
-            <div class="job-title">${vaga.vaga.titulo}</div>
-            <div class="job-area">${vaga.vaga.empresa}</div>
+            <div class="job-title">${vaga.titulo}</div>
+            <div class="job-area">${vaga.empresa}</div>
           </div>
           <span class="match-badge ${nivel}">${percentual}%</span>
         </div>
@@ -25,14 +25,14 @@ export function renderVagas(vagas) {
           <div class="scan-meter-fill ${nivel}" style="width:${percentual}%"></div>
         </div>
 
-        <p class="job-desc">${vaga.vaga.titulo}</p>
+        <p class="job-desc">${vaga.titulo}</p>
 
         <div class="skill-list">
          
         </div>
 
         <div class="job-foot">
-          <span>requisitos: ${vaga.vaga.requisitos}</span>
+          <span>requisitos: ${vaga.requisitos}</span>
                  </div>
       `;
 

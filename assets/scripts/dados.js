@@ -35,3 +35,19 @@ export async function getVagas() {
     return [];
   }
 }
+
+//Criar candidato no localstorage
+const CHAVE_CANDIDATO = "candidato";
+
+export function salvarCandidato(candidato) {
+  localStorage.setItem(CHAVE_CANDIDATO, JSON.stringify(candidato));
+}
+
+export function carregarCandidatoSalvo() {
+  const salvo = localStorage.getItem(CHAVE_CANDIDATO);
+  return salvo ? JSON.parse(salvo) : null;
+}
+
+export function removerCandidatoSalvo() {
+  localStorage.removeItem(CHAVE_CANDIDATO);
+}

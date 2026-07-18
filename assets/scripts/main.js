@@ -1,9 +1,16 @@
-import { getVagas } from "./dados.js";
+import {
+  getVagas,
+  salvarCandidato,
+  carregarCandidatoSalvo,
+  removerCandidatoSalvo,
+} from "./dados.js";
 import {
   renderVagas,
   initFormulario,
   renderDestaque,
   renderResumoCandidato,
+  limparFormulario,
+  initBotaoRemover,
 } from "./ui.js";
 import {
   compatibilidade,
@@ -12,20 +19,25 @@ import {
 } from "./motor.js";
 
 let vagas = [];
-let candidato = {
+const candidatoPadrao = {
   nome: "",
   area: "",
   habilidades: [],
   experienciaMeses: 0,
 };
+
+let candidato = carregarCandidatoSalvo() ?? candidatoPadrao;
+
 async function init() {
   vagas = await getVagas();
   atualizarTela();
   initFormulario(candidato, atualizarCandidato);
+  initBotaoRemover(limparCandidato);
 }
 
 function atualizarCandidato(novoCandidato) {
   candidato = novoCandidato;
+  salvarCandidato(candidato);
   renderResumoCandidato(candidato);
   atualizarTela();
 }

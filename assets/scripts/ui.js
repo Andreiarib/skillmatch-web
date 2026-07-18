@@ -102,3 +102,16 @@ export function renderResumoCandidato(candidato) {
   document.getElementById("statHabilidades").textContent =
     candidato.habilidades.length;
 }
+export function initBotaoRemover(onRemover) {
+  const btn = document.getElementById("btnLimparCandidato");
+  btn.addEventListener("click", () => {
+    onRemover();
+  });
+}
+
+export function limparFormulario() {
+  document.getElementById("nome").value = "";
+  document.getElementById("area").value = "";
+  document.getElementById("habilidades").value = "";
+  document.getElementById("experiencia").value = "";
+}

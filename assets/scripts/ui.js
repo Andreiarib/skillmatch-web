@@ -4,7 +4,6 @@ export function renderVagas(vagasComMatch) {
   let melhor = 0;
 
   vagasComMatch.forEach(({ vaga, resultado }) => {
-    console.log(vaga);
     const {
       classificacaoPercentual,
       requisitosAtendidos,
@@ -27,7 +26,7 @@ export function renderVagas(vagasComMatch) {
         </div>
 
         <div class="scan-meter" aria-hidden="true">
-          <div class="scan-meter-fill high" style="width:${classificacaoPercentual.toFixed(2)}%"></div>
+          <div class="scan-meter-fill ${classificacaoCSS}" style="width:${classificacaoPercentual.toFixed(2)}%"></div>
         </div>
 
         <p class="job-desc">Requisitos: ${vaga.requisitos.join(", ")}</p>
@@ -48,7 +47,8 @@ export function renderVagas(vagasComMatch) {
 
     grid.appendChild(card);
   });
-  document.getElementById("statMelhorMatch").textContent = melhor + "%";
+  document.getElementById("statMelhorMatch").textContent =
+    melhor.toFixed(2) + "%";
 }
 
 //submit
@@ -79,4 +79,26 @@ export function initFormulario(candidatoAtual, onSubmit) {
 
     onSubmit(novoCandidato);
   });
+}
+export function renderDestaque(vagaMaisCompativel, sugestoesEstudo) {
+  const destaque = document.getElementById("destaque");
+
+  if (!vagaMaisCompativel || vagaMaisCompativel.classificacaoPercentual === 0) {
+    destaque.innerHTML = "<p>Nenhuma vaga disponível no momento.</p>";
+    return;
+  }
+
+  destaque.innerHTML = `
+    <h3>Vaga mais compatível</h3>
+    <p>${vagaMaisCompativel.empresa} — ${vagaMaisCompativel.cargo}</p>
+    <p>${vagaMaisCompativel.classificacaoPercentual.toFixed(2)}% de compatibilidade</p>
+
+    <h3>Recomendações de estudo</h3>
+    <p>Priorize estudar: ${sugestoesEstudo.join(", ")}</p>
+  `;
+}
+
+export function renderResumoCandidato(candidato) {
+  document.getElementById("statHabilidades").textContent =
+    candidato.habilidades.length;
 }

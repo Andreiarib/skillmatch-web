@@ -1,5 +1,10 @@
 import { getVagas } from "./dados.js";
-import { renderVagas, initFormulario } from "./ui.js";
+import {
+  renderVagas,
+  initFormulario,
+  renderDestaque,
+  renderResumoCandidato,
+} from "./ui.js";
 import {
   compatibilidade,
   encontrarVagaMaisCompativel,
@@ -21,6 +26,7 @@ async function init() {
 
 function atualizarCandidato(novoCandidato) {
   candidato = novoCandidato;
+  renderResumoCandidato(candidato);
   atualizarTela();
 }
 
@@ -36,13 +42,14 @@ function atualizarTela() {
   );
 
   const vagaMaisCompativel = encontrarVagaMaisCompativel(compatibilidades);
-
+  const sugestoesEstudo = gerarSugestoesEstudo(compatibilidades);
   const vagasComMatch = vagas.map((vaga, i) => ({
     vaga,
     resultado: compatibilidades[i],
   }));
 
   renderVagas(vagasComMatch);
+  renderDestaque(vagaMaisCompativel, sugestoesEstudo);
 }
 
 init();

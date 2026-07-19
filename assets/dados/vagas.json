@@ -34,5 +34,23 @@
     "salario": 5290,
     "modalidade": "Remoto",
     "nivel": null
+  },
+  {
+    "id": 5,
+    "empresa": "Nubank",
+    "titulo": "Desenvolvedor Front-End Pleno",
+    "requisitos": ["JavaScript", "React", "TypeScript", "Git"],
+    "salario": 6800,
+    "modalidade": "Remoto",
+    "nivel": "Pleno"
+  },
+  {
+    "id": 6,
+    "empresa": "Mercado Livre",
+    "titulo": "Desenvolvedor Full Stack Júnior",
+    "requisitos": ["JavaScript", "Node.js", "React", "SQL"],
+    "salario": 4800,
+    "modalidade": "Híbrido",
+    "nivel": "Júnior"
   }
 ]

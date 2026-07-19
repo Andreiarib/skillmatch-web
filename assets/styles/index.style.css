@@ -3,19 +3,38 @@
    ========================================================= */
 
 :root {
-  --ink: #14181c;
-  --ink-soft: #40474d;
-  --paper: #f5f5f5;
-  --panel: #f7f5ee;
-  --panel-line: #d8d2c2;
-  --match-high: #2f6b4f;
-  --match-high-bg: #e2ecdf;
-  --match-mid: #a6791f;
-  --match-mid-bg: #f2e8d3;
-  --match-low: #a23e2e;
-  --match-low-bg: #f2ded9;
-  --accent: #2f6b4f;
+  /* Texto */
+  --ink: #1f2937;
+  --ink-soft: #64748b;
 
+  /* Fundos */
+  --paper: #f8fafc;
+  --panel: #ffffff;
+  --panel-line: #cbd5e1;
+
+  /* Compatibilidade */
+  --match-high: #10b981;
+  --match-high-bg: #d1fae5;
+
+  --match-mid: #f59e0b;
+  --match-mid-bg: #fef3c7;
+
+  --match-low: #ef4444;
+  --match-low-bg: #fee2e2;
+
+  /* Cor principal da marca */
+  --accent: #2563eb;
+
+  /* Extras */
+  --accent-dark: #1e40af;
+  --accent-light: #dbeafe;
+  --accent-orange: #e68a00;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --shadow: rgba(128, 128, 128, 0.55);
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", "Courier New", monospace;
@@ -119,6 +138,9 @@ h3 {
   letter-spacing: 0.1em;
 }
 
+.brand img {
+  height: 70px;
+}
 .nav-links {
   display: flex;
   gap: 28px;
@@ -250,7 +272,7 @@ h3 {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: var(--ink);
+  background: var(--accent-orange);
   color: var(--panel);
   border: var(--border);
   padding: 11px 20px;
@@ -266,6 +288,10 @@ h3 {
   background: var(--accent);
   border-color: var(--accent);
   outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--ink);
 }
 
 /* skill chips inside the form preview */
@@ -327,6 +353,11 @@ h3 {
   margin-top: 2px;
 }
 
+/*------resumo do candidato--------*/
+
+.destaque {
+  padding-top: 20px;
+}
 /* ---------- vagas section ---------- */
 
 .jobs {
@@ -334,11 +365,6 @@ h3 {
 }
 
 .jobs-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
   margin-bottom: 28px;
 }
 
@@ -350,7 +376,7 @@ h3 {
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  margin: 0;
+  margin: 20px 0 0 0;
 }
 
 .job-grid {
@@ -367,6 +393,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  -webkit-box-shadow: 5px 7px 11px 2px var(--shadow);
+  box-shadow: 5px 7px 11px 2px var(--shadow);
 }
 
 .job-card-top {
@@ -485,6 +513,9 @@ h3 {
   font-size: 0.76rem;
   color: var(--ink-soft);
 }
+.site-footer .wrap {
+  text-align: center;
+}
 
 /* ---------- responsive nav for small screens ---------- */
 
@@ -509,5 +540,12 @@ h3 {
 
   .scan-stats {
     grid-template-columns: 1fr;
+  }
+  .brand {
+    width: 100%;
+  }
+  .brand img {
+    text-align: center;
+    margin: 0 auto;
   }
 }

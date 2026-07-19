@@ -89,12 +89,14 @@ export function renderDestaque(vagaMaisCompativel, sugestoesEstudo) {
   }
 
   destaque.innerHTML = `
-    <h3>Vaga mais compatível</h3>
+   <div class="destaque">
+  <h3>Vaga mais compatível</h3>
     <p>${vagaMaisCompativel.empresa} — ${vagaMaisCompativel.cargo}</p>
     <p>${vagaMaisCompativel.classificacaoPercentual.toFixed(2)}% de compatibilidade</p>
 
     <h3>Recomendações de estudo</h3>
     <p>Priorize estudar: ${sugestoesEstudo.join(", ")}</p>
+    </div>
   `;
 }
 

@@ -97,6 +97,10 @@ Vagas com o campo `nivel` preenchido são instanciadas como `VagaFrontEnd` (que 
 - **Callback**: `initFormulario` e `initBotaoRemover` recebem funções (`onSubmit`, `onRemover`) que são executadas no momento certo pela camada de UI, sem que ela precise saber o que essas funções fazem
 - **`localStorage`**: persistência do candidato entre recarregamentos de página
 
+## Link do trello
+
+https://trello.com/b/tJvEz7X2/skillmatch-web
+
 ## Autora
 
 Andréia Domingos Ribeiro

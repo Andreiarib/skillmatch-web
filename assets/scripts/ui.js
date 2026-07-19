@@ -30,6 +30,7 @@ export function renderVagas(vagasComMatch) {
         </div>
 
         <p class="job-desc">Requisitos: ${vaga.requisitos.join(", ")}</p>
+        <p class="job-desc">Senioridade: ${vaga.nivel === undefined ? "Não especificada" : vaga.nivel}</p>
         <div class="job-foot">
 
  <p>Requisitos não Atendidos: ${requisitosNaoAtendidos}</p>
@@ -80,7 +81,11 @@ export function initFormulario(candidatoAtual, onSubmit) {
     onSubmit(novoCandidato);
   });
 }
-export function renderDestaque(vagaMaisCompativel, sugestoesEstudo) {
+export function renderDestaque(
+  vagaMaisCompativel,
+  sugestoesEstudo,
+  experiencia,
+) {
   const destaque = document.getElementById("destaque");
 
   if (!vagaMaisCompativel || vagaMaisCompativel.classificacaoPercentual === 0) {
@@ -96,6 +101,8 @@ export function renderDestaque(vagaMaisCompativel, sugestoesEstudo) {
 
     <h3>Recomendações de estudo</h3>
     <p>Priorize estudar: ${sugestoesEstudo.join(", ")}</p>
+    <h3>Tempo de experiência</h3>
+    <p> ${experiencia} meses </p>
     </div>
   `;
 }
@@ -116,4 +123,28 @@ export function limparFormulario() {
   document.getElementById("area").value = "";
   document.getElementById("habilidades").value = "";
   document.getElementById("experiencia").value = "";
+  document.getElementById("statHabilidades").textContent = 0;
+}
+//funções para tratamento de erro ao carregar vagas
+
+export function renderCarregando() {
+  const status = document.getElementById("status");
+  status.textContent = "Carregando vagas…";
+  document.getElementById("jobGrid").innerHTML = "";
+}
+
+export function renderErro(mensagem) {
+  const status = document.getElementById("status");
+  status.textContent = mensagem;
+  document.getElementById("jobGrid").innerHTML = "";
+}
+
+export function renderVazio(mensagem) {
+  const status = document.getElementById("status");
+  status.textContent = mensagem;
+  document.getElementById("jobGrid").innerHTML = "";
+}
+
+export function limparStatus() {
+  document.getElementById("status").textContent = "";
 }

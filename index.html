@@ -11,6 +11,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/styles/index.style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/img/site.webmanifest" />
   </head>
   <body>
     <nav class="site-nav">
@@ -73,12 +91,11 @@
               name="experiencia"
               value=""
               min="0"
-              required
             />
           </div>
 
           <button type="submit" class="btn">
-            Rodar análise de compatibilidade
+            Executar análise de compatibilidade
           </button>
           <button
             type="button"
@@ -120,7 +137,7 @@
             candidato já possui
           </p>
         </div>
-
+        <p id="status" role="status" aria-live="polite"></p>
         <div class="job-grid" id="jobGrid"></div>
       </div>
     </section>

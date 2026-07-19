@@ -11,6 +11,10 @@ import {
   renderResumoCandidato,
   limparFormulario,
   initBotaoRemover,
+  renderCarregando,
+  renderErro,
+  renderVazio,
+  limparStatus,
 } from "./ui.js";
 import {
   compatibilidade,
@@ -29,8 +33,23 @@ const candidatoPadrao = {
 let candidato = carregarCandidatoSalvo() ?? candidatoPadrao;
 
 async function init() {
-  vagas = await getVagas();
-  atualizarTela();
+  renderCarregando(); // 1. ESTADO: carregando
+
+  try {
+    vagas = await getVagas();
+
+    if (vagas.length === 0) {
+      renderVazio("Nada encontrado. Nenhuma vaga está disponível no momento."); // 2. ESTADO: vazio
+    } else {
+      limparStatus();
+      atualizarTela(); // caminho normal (sucesso) — não é um dos 3 estados tratados
+    }
+  } catch (error) {
+    renderErro(
+      "Não foi possível carregar as vagas. Verifique sua conexão e tente novamente.",
+    ); // 3. ESTADO: erro
+  }
+
   initFormulario(candidato, atualizarCandidato);
   initBotaoRemover(limparCandidato);
 }
@@ -43,9 +62,10 @@ function atualizarCandidato(novoCandidato) {
 }
 
 function limparCandidato() {
+  candidato = candidatoPadrao;
   removerCandidatoSalvo();
-  atualizarTela();
   limparFormulario();
+  atualizarTela();
 }
 
 function atualizarTela() {
@@ -60,8 +80,14 @@ function atualizarTela() {
     resultado: compatibilidades[i],
   }));
 
+  renderResumoCandidato(candidato);
   renderVagas(vagasComMatch);
-  renderDestaque(vagaMaisCompativel, sugestoesEstudo);
+
+  renderDestaque(
+    vagaMaisCompativel,
+    sugestoesEstudo,
+    candidato.experienciaMeses,
+  );
 }
 
 init();
